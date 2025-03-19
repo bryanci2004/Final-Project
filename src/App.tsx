@@ -28,6 +28,7 @@ function App() {
     <div className="App">
       <p>
         Bryan Cabrera Icte: Hello World
+        Andy Vey: Hello Website
       </p>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

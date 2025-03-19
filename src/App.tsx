@@ -30,6 +30,8 @@ function App() {
         Bryan Cabrera Icte: Hello World
         <br></br>
         Andy Vey: Hello Website
+        <br></br>
+        Kush Patel: Hello Viewer
       </p>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

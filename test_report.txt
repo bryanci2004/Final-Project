@@ -16,11 +16,8 @@ All files           |   28.57 |    16.66 |      20 |   28.57 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        1.764 s
+Time:        2.571 s
 Ran all test suites.
-Jest did not exit one second after the test run has completed.
-
-This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because

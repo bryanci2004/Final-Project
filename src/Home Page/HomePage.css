@@ -1,0 +1,24 @@
+.HomePage-header{
+    width: 100vw;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    color: grey;
+}
+
+.HomePage-body{
+    background-color: bisque;
+    height: 100vh;
+    width: 100vw;
+}
+
+.HomePage-questionsContainers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: antiquewhite;
+}

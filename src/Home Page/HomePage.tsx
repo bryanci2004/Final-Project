@@ -1,4 +1,4 @@
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './HomePage.css'
 
@@ -14,7 +14,9 @@ function HomePage() {
         <div className="HomePage-body">
             <Container>
                 <Row>
-                    <h1> Welcome to Career Quiz! The first ever AI powered career quiz!</h1>
+                    <Col>
+                        <h1>Welcome to Career Quiz! The first ever AI powered career quiz!</h1>
+                    </Col>
                 </Row>
             </Container>
             <span>
@@ -35,8 +37,7 @@ function HomePage() {
                     </Row>
                 </Container>
             </span>
-                <Button onClick={() => { navigate("/App"); } }>App</Button>
-            </div>
+        </div>
         </>
     );
 }

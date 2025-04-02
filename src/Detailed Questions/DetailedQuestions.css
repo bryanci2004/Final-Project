@@ -1,0 +1,10 @@
+.DetailedQuestions-header{
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(31, 41, 50);
+    color: white;
+}

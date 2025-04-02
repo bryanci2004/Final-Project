@@ -1,26 +1,38 @@
 .HomePage-header{
     width: 100vw;
-    height: auto;
-
+    height: 10vh;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
-    color: grey;
+    background-color: rgb(31, 41, 50);
+    color: white;
 }
 
 .HomePage-body{
-    background-color: bisque;
+    background-color: rgb(255, 255, 255);
     height: 100vh;
     width: 100vw;
-}
-
-.HomePage-questionsContainers{
-    width: 500px;
-    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
-    color: antiquewhite;
+}
+
+.HomePage-questionsContainers {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    margin: 2%;
+}
+
+.HomePage-footer{
+    width: 100vw;
+    height: 7vh;
+    background-color: rgb(31, 41, 50);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

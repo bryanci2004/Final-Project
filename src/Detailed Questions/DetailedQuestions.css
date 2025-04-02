@@ -1,0 +1,34 @@
+.DetailedQuestions-header{
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(31, 41, 50);
+    color: white;
+}
+
+.DetailedQuestions-body{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DetailedQuestions-questionsContainers {
+    width: 60vw;
+    height: 60vh;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    margin: 2%;
+}
+
+.DetailedQuestions-homePageButton{
+    margin-left: 67%;
+}

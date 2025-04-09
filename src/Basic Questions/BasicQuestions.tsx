@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './BasicQuestions.css';
 import { useState } from "react";
@@ -23,6 +23,7 @@ function BasicQuestions() {
             </header>
         <div className="BasicQuestions-body">
             <Container>
+                <Card>
                 <Row className="justify-content-center mt-4">
                         <Col md={5} className="BasicQuestions-questionsContainers">
                             <h2>Question 1: Long-Term Career Goals</h2>
@@ -49,6 +50,8 @@ function BasicQuestions() {
                                 </Form>
                         </Col>
                     </Row>
+                    </Card>
+                    <Card>
                     <Row className="justify-content-center mt-4">
                         <Col md={5} className="BasicQuestions-questionsContainers">
                             <h2>Question 2: Long-Term Career Goals</h2>
@@ -75,6 +78,8 @@ function BasicQuestions() {
                                 </Form>
                         </Col>
                     </Row>
+                    </Card>
+                    <Card>
                     <Row className="justify-content-center mt-4">
                     <Col md={5} className="BasicQuestions-questionsContainers">
                         <h2>Question 3: Long-Term Career Goals</h2>
@@ -101,6 +106,8 @@ function BasicQuestions() {
                             </Form>
                     </Col>
                 </Row>
+                </Card>
+                <Card>
                 <Row className="justify-content-center mt-4">
                     <Col md={5} className="BasicQuestions-questionsContainers">
                         <h2>Question 4: Long-Term Career Goals</h2>
@@ -127,6 +134,8 @@ function BasicQuestions() {
                             </Form>
                     </Col>
                 </Row>
+                </Card>
+                <Card>
                 <Row className="justify-content-center mt-4">
                     <Col md={5} className="BasicQuestions-questionsContainers">
                         <h2>Question 5: Long-Term Career Goals</h2>
@@ -153,6 +162,8 @@ function BasicQuestions() {
                             </Form>
                     </Col>
                 </Row>
+                </Card>
+                <Card>
                 <Row className="justify-content-center mt-4">
                     <Col md={5} className="BasicQuestions-questionsContainers">
                         <h2>Question 6: Long-Term Career Goals</h2>
@@ -179,6 +190,8 @@ function BasicQuestions() {
                             </Form>
                     </Col>
                 </Row>
+                </Card>
+                <Card>
                 <Row className="justify-content-center mt-4">
                     <Col md={5} className="BasicQuestions-questionsContainers">
                         <h2>Question 7: Long-Term Career Goals</h2>
@@ -205,10 +218,15 @@ function BasicQuestions() {
                             </Form>
                     </Col>
                 </Row>
-                    <span>
-                        <Button style={{margin: '40px', width: '100px'}}>Prev</Button>
-                        <Button style={{marginRight: '40px', width: '100px'}}>Next</Button>
-                    </span>
+                </Card>
+                <Row>
+                    <Col>
+                        <span>
+                            <Button style={{margin: '40px', width: '100px'}}>Prev</Button>
+                            <Button style={{marginRight: '40px', width: '100px'}}>Next</Button>
+                        </span>
+                    </Col>
+                </Row>
                 </Container>
 
             </div>

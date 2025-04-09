@@ -7,17 +7,13 @@ function BasicQuestions() {
     
     const navigate = useNavigate();
 
-    const [answers, setAnswers] = useState(Array(7).fill(''));
+    const [basicQuestionsAnswers, setBasicQuestionsAnswers] = useState(Array(7).fill(''));
 
     function handleAnswerChange(index: number, value: string){
-        const updatedAnswers = {...answers};
+        const updatedAnswers = {...basicQuestionsAnswers};
         updatedAnswers[index] = value;
-        setAnswers({...updatedAnswers});
+        setBasicQuestionsAnswers({...updatedAnswers});
     }
-
-    const handleClick = () => {
-        console.log({answers});
-      };
     
     return (
         <>
@@ -210,7 +206,7 @@ function BasicQuestions() {
                     </Col>
                 </Row>
                     <span>
-                        <Button style={{margin: '40px', width: '100px'}} onClick={handleClick}>Prev</Button>
+                        <Button style={{margin: '40px', width: '100px'}}>Prev</Button>
                         <Button style={{marginRight: '40px', width: '100px'}}>Next</Button>
                     </span>
                 </Container>

@@ -11,7 +11,7 @@
 
 .BasicQuestions-body{
     background-color: rgb(255, 255, 255);
-    height: 100vh;
+    height: auto;
     width: 100vw;
     display: flex;
     justify-content: center;

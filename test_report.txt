@@ -26,28 +26,30 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 PASS src/App.test.tsx
-  ✓ renders learn react link (53 ms)
+  ✓ renders learn react link (54 ms)
 
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   11.11 |     12.5 |    4.54 |   11.53 |                   
+All files               |    7.89 |       10 |    3.03 |    8.45 |                   
  src                    |   27.27 |    16.66 |   16.66 |   27.27 |                   
   App.tsx               |      60 |       50 |   33.33 |      60 | 11,19-25          
-  Routing.tsx           |       0 |      100 |       0 |       0 | 8                 
+  Routing.tsx           |       0 |      100 |       0 |       0 | 9                 
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/Basic Questions    |       0 |      100 |       0 |       0 |                   
-  BasicQuestions.tsx    |       0 |      100 |       0 |       0 | 8-104             
+ src/Basic Questions    |       0 |        0 |       0 |       0 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 8-158             
+ src/ChatGPT API        |       0 |      100 |       0 |       0 |                   
+  ChatGptApi.tsx        |       0 |      100 |       0 |       0 | 5                 
  src/Detailed Questions |       0 |      100 |       0 |       0 |                   
-  DetailedQuestions.tsx |       0 |      100 |       0 |       0 | 7-13              
+  DetailedQuestions.tsx |       0 |      100 |       0 |       0 | 9-107             
  src/Home Page          |       0 |        0 |       0 |       0 |                   
-  HomePage.tsx          |       0 |        0 |       0 |       0 | 7-62              
+  HomePage.tsx          |       0 |        0 |       0 |       0 | 7-78              
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.964 s
+Time:        3.083 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without

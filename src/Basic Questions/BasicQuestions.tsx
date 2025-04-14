@@ -95,8 +95,7 @@ function BasicQuestions() {
         const updatedAnswers = [...basicQuestionsAnswers];
         updatedAnswers[index] = value;
         setBasicQuestionsAnswers(updatedAnswers);
-    
-        // Recalculate progress
+
         const answeredCount = updatedAnswers.filter(ans => ans !== '').length;
         const progress = (answeredCount / questions.length) * 100;
         setBasicQuestionsProgress(progress);

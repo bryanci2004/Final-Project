@@ -75,6 +75,7 @@ function HomePage() {
                     style={{ width: '550px' }} // Adjust width as needed
                 />
                 <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                <Button onClick={() => navigate("/ChatGPTAPI")}>ChatGPTAPI</Button>
             </Form>
             </div>
         </>

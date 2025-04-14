@@ -1,37 +1,114 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './DetailedQuestions.css';
+import { useState } from "react";
 
 function DetailedQuestions() {
     
-    const navigate = useNavigate();
-
+     
+     const navigate = useNavigate();
+ 
+     const questions = [
+         {
+             title: "Question 1: Long-Term Career Goals",
+             question: "Do you enjoy driving to work?",
+             options: ["Perhaps", "Not at all"]
+         },
+         {
+             title: "Question 2: Work Preferences",
+             question: "Do you prefer working remotely or in-office?",
+             options: ["Remote", "In-Office"]
+         },
+         {
+             title: "Question 3: Collaboration Style",
+             question: "Do you like working in teams?",
+             options: ["Yes", "No", "Sometimes"]
+         },
+         {
+             title: "Question 4: Learning Preferences",
+             question: "How do you prefer to learn new skills?",
+             options: ["Reading", "Videos", "Hands-on practice"]
+         },
+         {
+             title: "Question 5: Work-Life Balance",
+             question: "Is work-life balance important to you?",
+             options: ["Yes", "No"]
+         },
+         {
+             title: "Question 6: Time Management",
+             question: "Are you a morning person?",
+             options: ["Yes", "No"]
+         },
+         {
+             title: "Question 7: Job Security",
+             question: "Would you prefer a stable job or a high-risk high-reward role?",
+             options: ["Stable Job", "High-Risk High-Reward"]
+         },
+     ];
+ 
+     const[visibleCard, setVisibleCard] = useState(0);
+     const [detailedQuestionsAnswers, setDetailedQuestionsAnswers] = useState(Array(7).fill(''));
+ 
+     function handleAnswerChange(index: number, value: string){
+         const updatedAnswers = {...detailedQuestionsAnswers};
+         updatedAnswers[index] = value;
+         setDetailedQuestionsAnswers({...updatedAnswers});
+     }
+ 
+     const currentQuestion = questions[visibleCard];
+ 
+     
     return (
         <>
        <header className="DetailedQuestions-header">
-                <h1>Detailed Questions</h1>
+                <h1>Detailed Questions </h1>
                 <Button onClick={() => { navigate("/"); }} className="DetailedQuestions-homePageButton">Home Page</Button>
+                <Button onClick={() => { navigate("/BasicQuestions"); }} className="DetailedQuestions-BasicButton">Switch Quiz</Button>
+
             </header>
         <div className="DetailedQuestions-body">
             <Container>
-                <Row className="justify-content-center mt-4">
-                    <Col md={5} className="DetailedQuestions-questionsContainers">
-                        <h2>Question 2: Long-Term Career Goals</h2>
-                        <br></br>
-                        <h6>
-                        Where do you see yourself in your career five years from now? What steps are you planning to take to achieve these goals, and how do you plan to overcome potential obstacles?
-                        </h6>
+            <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                        <Row className="justify-content-center mt-4">
+                            <Col md={5} className="DetailedQuestions-questionsContainers">
+                                <h2>{currentQuestion.title}</h2>
+                                <br />
+                                <h6>{currentQuestion.question}</h6>
 
-                        <Form className="d-flex justify-content-center align-items-center gap-3">
-                            <Form.Control 
-                                style={{ width: '57.5vw', height: '30vh' }} // Adjust width as needed
-                            />
-                        </Form>
-                        <span>
-                            <Button style={{margin: '40px', width: '100px'}}>Prev</Button>
-                            <Button style={{marginRight: '40px', width: '100px'}}>Next</Button>
-                        </span>
-                        
+                                <Form className="d-flex flex-column align-items-start gap-3 mt-3">
+                                    {currentQuestion.options.map((option, i) => (
+                                        <Form.Check
+                                            key={i}
+                                            type="radio"
+                                            label={option}
+                                            name={`question-${visibleCard}`}
+                                            value={option}
+                                            checked={detailedQuestionsAnswers[visibleCard] === option}
+                                            onChange={(e) => handleAnswerChange(visibleCard, e.target.value)}
+                                        />
+                                    ))}
+                                </Form>
+                            </Col>
+                        </Row>
+                    <Row>
+                        <Col className="d-flex justify-content-center">
+                            <Button
+                                style={{ margin: '40px', width: '100px' }}
+                                onClick={() => setVisibleCard((prev) => Math.max(0, prev - 1))}
+                                disabled={visibleCard === 0}
+                            >
+                                Prev
+                            </Button>
+                            <Button
+                                style={{ margin: '40px', width: '100px' }}
+                                onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
+                                disabled={visibleCard === questions.length - 1}
+                            >
+                                Next
+                            </Button>
                     </Col>
                 </Row>
             </Container>

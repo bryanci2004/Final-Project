@@ -3,6 +3,7 @@ import BasicQuestions from "./Basic Questions/BasicQuestions";
 import DetailedQuestions from "./Detailed Questions/DetailedQuestions";
 import HomePage from "./Home Page/HomePage";
 import App from "./App";
+import ChatGPTAPI from "./ChatGPT API/ChatGptApi";
 
 function Routing(){
     return(
@@ -13,6 +14,7 @@ function Routing(){
           <Route path="/DetailedQuestions" element={<DetailedQuestions />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/App" element={<App />} />
+          <Route path="/ChatGPTAPI" element={<ChatGPTAPI />} />
         </Routes>
       </HashRouter>
       </>

@@ -92,13 +92,13 @@ function BasicQuestions() {
     const [basicQuestionsProgress, setBasicQuestionsProgress] = useState(0);
 
     function handleAnswerChange(index: number, value: string){
-        const updatedAnswers = {...basicQuestionsAnswers};
+        const updatedAnswers = [...basicQuestionsAnswers];
         updatedAnswers[index] = value;
-        setBasicQuestionsAnswers({...updatedAnswers});
-    }
+        setBasicQuestionsAnswers(updatedAnswers);
 
-    function handleProgressBar(){
-        
+        const answeredCount = updatedAnswers.filter(ans => ans !== '').length;
+        const progress = (answeredCount / questions.length) * 100;
+        setBasicQuestionsProgress(progress);
     }
 
     const currentQuestion = questions[visibleCard];
@@ -141,7 +141,7 @@ function BasicQuestions() {
                         </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                        <progress value={75} max={100} />
+                        <progress value={basicQuestionsProgress} max={100} />
                         </Col>
                     </Row>
                     <Row>

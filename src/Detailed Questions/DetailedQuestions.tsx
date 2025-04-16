@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function DetailedQuestions() {
     
-     
      const navigate = useNavigate();
  
      const questions = [
@@ -62,23 +61,22 @@ function DetailedQuestions() {
     return (
         <>
        <header className="DetailedQuestions-header">
-                <h1>Detailed Questions </h1>
-                <Button onClick={() => { navigate("/"); }} className="DetailedQuestions-homePageButton">Home Page</Button>
-                <Button onClick={() => { navigate("/BasicQuestions"); }} className="DetailedQuestions-BasicButton">Switch Quiz</Button>
+            <h1>Detailed Questions </h1>
+            <Button onClick={() => { navigate("/"); }} className="DetailedQuestions-homePageButton">Home Page</Button>
+            <Button onClick={() => { navigate("/BasicQuestions"); }} >Switch Quiz</Button>
+        </header>
 
-            </header>
         <div className="DetailedQuestions-body">
-        
             <Container>
-            <br></br>
-                    <br></br>
-                    <br></br>
-                    <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                         <Row className="justify-content-center mt-4">
                             <Col md={5} className="DetailedQuestions-questionsContainers">
                                 <h2>{currentQuestion.title}</h2>
                                 <br />
-                                <h6>{currentQuestion.question}</h6>
+                                <h5>{currentQuestion.question}</h5>
 
                                 <Form className="d-flex flex-column align-items-start gap-3 mt-3">
                                 <Form.Control
@@ -87,45 +85,42 @@ function DetailedQuestions() {
                                     placeholder="Type your answer here..."
                                     value={detailedQuestionsAnswers[visibleCard]}
                                     onChange={(e) => handleAnswerChange(visibleCard, e.target.value)}
-                                    style={{height: '40vh'}}
+                                    style={{height: '35vh'}}
                                 />
                             </Form>
-                                <br></br>
-                                <Row>
+                            <br></br>
+                            <Row>
                                 <Button
-            
-                                //onClick={() => "submit action"}
-
-                                disabled={visibleCard !== questions.length - 1} 
-                            >
-                                Submit Assessment
-                            </Button>
+                                    //onClick={() => "submit action"}
+                                    disabled={visibleCard !== questions.length - 1}>
+                                    Submit Assessment
+                                </Button>
                             </Row>
                             </Col>
                         </Row>
                         <Row>
                         <Col className="d-flex justify-content-center">
-                        <progress value={detailedQuestionsProgress} max={100} />
+                        <progress value={detailedQuestionsProgress} max={100} className="DetailedQuestions-ProgressBar"/>
                         </Col>
                     </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
                             <Button
-                                style={{ margin: '40px', width: '100px' }}
+                                style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.max(0, prev - 1))}
                                 disabled={visibleCard === 0}
                             >
                                 Prev
                             </Button>
                             <Button
-                                style={{ margin: '40px', width: '100px' }}
+                                style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
                                 disabled={visibleCard === questions.length - 1}
                             >
                                 Next
                             </Button>
                             <Button
-                                style={{ margin: '40px', width: '100px' }}
+                                style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
 
                                 disabled={visibleCard === questions.length - 1} 
@@ -142,4 +137,3 @@ function DetailedQuestions() {
   }
   
   export default DetailedQuestions;
-  

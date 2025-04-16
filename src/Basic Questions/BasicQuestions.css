@@ -1,57 +1,87 @@
 .BasicQuestions-header{
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(31, 41, 50);
-    color: white;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(31, 41, 50);
+  color: white;
 }
 
 .BasicQuestions-body{
-    background-color: rgb(255, 255, 255);
-    height: auto;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .BasicQuestions-questionsContainers {
-    width: 60vw;
-    height: 60vh;
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f8f9fa;
-    margin: 2%;
+  width: 60vw;
+  height: auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  margin: 2%;
 }
 
 .BasicQuestions-homePageButton{
-    margin-left: 67%;
+  margin-left: 62.5%;
 }
 
 .rectangle-option {
-    width: 100%;
-    padding: 12px 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    font-size: 1rem;
-    background-color: white;
-    color: #333;
-  }
-  
-  .rectangle-option:hover {
-    border-color: #007bff;
-    background-color: #f0f8ff;
-  }
-  
-  .rectangle-option.selected {
-    background-color: #007bff;
-    color: white;
-    border-color: #0056b3;
-  }
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+}
+
+.rectangle-option:hover {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.rectangle-option.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.BasicQuestions-ProgressBar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 700px;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  border: none;
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.BasicQuestions-ProgressBar::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.BasicQuestions-ProgressBar::-webkit-progress-value {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  border-radius: 10px;
+  transition: width 0.4s ease-in-out;
+}
+
+/* For Firefox */
+.BasicQuestions-ProgressBar::-moz-progress-bar {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  border-radius: 10px;
+  transition: width 0.4s ease-in-out;
+}

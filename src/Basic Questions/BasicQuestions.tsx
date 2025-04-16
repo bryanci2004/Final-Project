@@ -109,8 +109,7 @@ function BasicQuestions() {
        <header className="BasicQuestions-header">
                 <h1>Basic Questions</h1>
                 <Button onClick={() => { navigate("/"); }} className="BasicQuestions-homePageButton">Home Page</Button>
-                <Button onClick={() => { navigate("/DetailedQuestions"); }} className="BasicQuestions-DetailedButton">Switch Quiz</Button>
-
+                <Button onClick={() => { navigate("/DetailedQuestions"); }}>Switch Quiz</Button>
             </header>
             <div className="BasicQuestions-body">
                 <Container>
@@ -139,31 +138,39 @@ function BasicQuestions() {
                                         );
                                     })}
                                 </Form>
+                                <br></br>
+                            <Row>
+                                <Button
+                                    //onClick={() => "submit action"}
+                                    disabled={visibleCard !== questions.length - 1}>
+                                    Submit Assessment
+                                </Button>
+                            </Row>
                             </Col>
                         </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                        <progress value={basicQuestionsProgress} max={100} />
+                        <progress value={basicQuestionsProgress} max={100} className="BasicQuestions-ProgressBar"/>
                         </Col>
                     </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
                             <Button
-                                style={{ margin: '3%', width: '8%' }}
+                                style={{ margin: '2%', width: '8%' }}
                                 onClick={() => setVisibleCard((prev) => Math.max(0, prev - 1))}
                                 disabled={visibleCard === 0}
                             >
                                 Prev
                             </Button>
                             <Button
-                                style={{ margin: '3%', width: '8%' }}
+                                style={{ margin: '2%', width: '8%' }}
                                 onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
                                 disabled={visibleCard === questions.length - 1}
                             >
                                 Next
                             </Button>
                             <Button
-                                style={{ margin: '40px', width: '100px' }}
+                                style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
 
                                 disabled={visibleCard === questions.length - 1} 

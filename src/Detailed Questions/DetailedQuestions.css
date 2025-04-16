@@ -20,7 +20,7 @@
 
 .DetailedQuestions-questionsContainers {
     width: 60vw;
-    height: 60vh;
+    height: auto;
     text-align: center;
     padding: 20px;
     border: 1px solid #ddd;
@@ -32,3 +32,33 @@
 .DetailedQuestions-homePageButton{
     margin-left: 62.5%;
 }
+
+.DetailedQuestions-ProgressBar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 700px;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    border: none;
+  }
+  
+  /* For WebKit browsers (Chrome, Safari, Edge) */
+  .DetailedQuestions-ProgressBar::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+  }
+  
+  .DetailedQuestions-ProgressBar::-webkit-progress-value {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 10px;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  /* For Firefox */
+  .DetailedQuestions-ProgressBar::-moz-progress-bar {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 10px;
+    transition: width 0.4s ease-in-out;
+  }

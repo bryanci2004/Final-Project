@@ -10,31 +10,31 @@ function DetailedQuestions() {
      const questions = [
          {
              title: "Question 1: Long-Term Career Goals",
-             question: "Do you enjoy driving to work?",
+             question: "How does your daily commute impact your overall job satisfaction and long-term career goals? Would a shorter or more flexible commute change how you view your current or future roles?",
          },
          {
              title: "Question 2: Work Preferences",
-             question: "Do you prefer working remotely or in-office?",
+             question: "What aspects of remote versus in-office work environments do you find most energizing or draining? How do these preferences influence your productivity, creativity, and sense of connection with your team?",
          },
          {
              title: "Question 3: Collaboration Style",
-             question: "Do you like working in teams?",
+             question: "When collaborating on a project, what role do you naturally gravitate toward, and how does working in a team setting challenge or enhance your effectiveness? How do you handle differences in work styles or opinions?",
          },
          {
              title: "Question 4: Learning Preferences",
-             question: "How do you prefer to learn new skills?",
+             question: "Can you describe a time when you successfully learned a new skill or concept—what methods helped you most? How do you adapt your learning style based on the complexity or urgency of a situation?",
          },
          {
              title: "Question 5: Work-Life Balance",
-             question: "Is work-life balance important to you?",
+             question: "How do you define a healthy work-life balance for yourself, and what boundaries or routines help you maintain it? How has your view of balance evolved throughout your career or personal life?",
          },
          {
              title: "Question 6: Time Management",
-             question: "Are you a morning person?",
+             question: "When during the day do you feel most focused and productive, and how do you structure your time to align with your natural energy cycles? Have you developed any personal routines that significantly improve your time management?",
          },
          {
              title: "Question 7: Job Security",
-             question: "Would you prefer a stable job or a high-risk high-reward role?",
+             question: "How do you evaluate risk and stability when making career decisions? What trade-offs are you willing to accept for greater security or greater opportunity, and how do those choices reflect your personal values or goals?",
          },
      ];
  

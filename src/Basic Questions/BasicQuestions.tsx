@@ -109,6 +109,8 @@ function BasicQuestions() {
        <header className="BasicQuestions-header">
                 <h1>Basic Questions</h1>
                 <Button onClick={() => { navigate("/"); }} className="BasicQuestions-homePageButton">Home Page</Button>
+                <Button onClick={() => { navigate("/DetailedQuestions"); }} className="BasicQuestions-DetailedButton">Switch Quiz</Button>
+
             </header>
             <div className="BasicQuestions-body">
                 <Container>
@@ -159,6 +161,14 @@ function BasicQuestions() {
                                 disabled={visibleCard === questions.length - 1}
                             >
                                 Next
+                            </Button>
+                            <Button
+                                style={{ margin: '40px', width: '100px' }}
+                                onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
+
+                                disabled={visibleCard === questions.length - 1} 
+                            >
+                                Skip
                             </Button>
                         </Col>
                     </Row>

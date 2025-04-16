@@ -12,48 +12,49 @@ function DetailedQuestions() {
          {
              title: "Question 1: Long-Term Career Goals",
              question: "Do you enjoy driving to work?",
-             options: ["Perhaps", "Not at all"]
          },
          {
              title: "Question 2: Work Preferences",
              question: "Do you prefer working remotely or in-office?",
-             options: ["Remote", "In-Office"]
          },
          {
              title: "Question 3: Collaboration Style",
              question: "Do you like working in teams?",
-             options: ["Yes", "No", "Sometimes"]
          },
          {
              title: "Question 4: Learning Preferences",
              question: "How do you prefer to learn new skills?",
-             options: ["Reading", "Videos", "Hands-on practice"]
          },
          {
              title: "Question 5: Work-Life Balance",
              question: "Is work-life balance important to you?",
-             options: ["Yes", "No"]
          },
          {
              title: "Question 6: Time Management",
              question: "Are you a morning person?",
-             options: ["Yes", "No"]
          },
          {
              title: "Question 7: Job Security",
              question: "Would you prefer a stable job or a high-risk high-reward role?",
-             options: ["Stable Job", "High-Risk High-Reward"]
          },
      ];
  
      const[visibleCard, setVisibleCard] = useState(0);
      const [detailedQuestionsAnswers, setDetailedQuestionsAnswers] = useState(Array(7).fill(''));
+     const [detailedQuestionsProgress, setDetailedQuestionsProgress] = useState(0);
+
  
-     function handleAnswerChange(index: number, value: string){
-         const updatedAnswers = {...detailedQuestionsAnswers};
-         updatedAnswers[index] = value;
-         setDetailedQuestionsAnswers({...updatedAnswers});
-     }
+    
+     function handleAnswerChange(index: number, value: string) {
+        const updatedAnswers = [...detailedQuestionsAnswers]; // spread as array
+        updatedAnswers[index] = value;
+        setDetailedQuestionsAnswers(updatedAnswers);
+    
+        const answeredCount = updatedAnswers.filter(ans => ans.trim() !== '').length;
+        const progress = (answeredCount / questions.length) * 100;
+        setDetailedQuestionsProgress(progress);
+    }
+
  
      const currentQuestion = questions[visibleCard];
  
@@ -67,6 +68,7 @@ function DetailedQuestions() {
 
             </header>
         <div className="DetailedQuestions-body">
+        
             <Container>
             <br></br>
                     <br></br>
@@ -79,20 +81,33 @@ function DetailedQuestions() {
                                 <h6>{currentQuestion.question}</h6>
 
                                 <Form className="d-flex flex-column align-items-start gap-3 mt-3">
-                                    {currentQuestion.options.map((option, i) => (
-                                        <Form.Check
-                                            key={i}
-                                            type="radio"
-                                            label={option}
-                                            name={`question-${visibleCard}`}
-                                            value={option}
-                                            checked={detailedQuestionsAnswers[visibleCard] === option}
-                                            onChange={(e) => handleAnswerChange(visibleCard, e.target.value)}
-                                        />
-                                    ))}
-                                </Form>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3}
+                                    placeholder="Type your answer here..."
+                                    value={detailedQuestionsAnswers[visibleCard]}
+                                    onChange={(e) => handleAnswerChange(visibleCard, e.target.value)}
+                                    style={{height: '40vh'}}
+                                />
+                            </Form>
+                                <br></br>
+                                <Row>
+                                <Button
+            
+                                //onClick={() => "submit action"}
+
+                                disabled={visibleCard !== questions.length - 1} 
+                            >
+                                Submit Assessment
+                            </Button>
+                            </Row>
                             </Col>
                         </Row>
+                        <Row>
+                        <Col className="d-flex justify-content-center">
+                        <progress value={detailedQuestionsProgress} max={100} />
+                        </Col>
+                    </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
                             <Button
@@ -108,6 +123,14 @@ function DetailedQuestions() {
                                 disabled={visibleCard === questions.length - 1}
                             >
                                 Next
+                            </Button>
+                            <Button
+                                style={{ margin: '40px', width: '100px' }}
+                                onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
+
+                                disabled={visibleCard === questions.length - 1} 
+                            >
+                                Skip
                             </Button>
                     </Col>
                 </Row>

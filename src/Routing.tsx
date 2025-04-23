@@ -3,7 +3,7 @@ import BasicQuestions from "./Basic Questions/BasicQuestions";
 import DetailedQuestions from "./Detailed Questions/DetailedQuestions";
 import HomePage from "./Home Page/HomePage";
 import App from "./App";
-import ChatGPTAPI from "./ChatGPT API/ChatGptApi";
+import ChatGPTAPI from "./ChatGPT_API/ChatGptApi";
 
 function Routing(){
     return(

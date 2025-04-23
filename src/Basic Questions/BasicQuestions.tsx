@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './BasicQuestions.css';
 import { useState } from "react";
@@ -87,7 +87,7 @@ function BasicQuestions() {
         }
       ];
 
-    const[visibleCard, setVisibleCard] = useState(0);
+    const [visibleCard, setVisibleCard] = useState(0);
     const [basicQuestionsAnswers, setBasicQuestionsAnswers] = useState(Array(7).fill(''));
     const [basicQuestionsProgress, setBasicQuestionsProgress] = useState(0);
 
@@ -117,8 +117,30 @@ function BasicQuestions() {
                     <br></br>
                     <br></br>
                     <br></br>
+                      <Row>
+                        <Col>
+                          
+                        </Col>
+                      </Row>
                         <Row className="justify-content-center mt-4">
                             <Col md={5} className="BasicQuestions-questionsContainers">
+
+                                <Dropdown>
+                                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                      Question {visibleCard + 1}
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item onClick={() => setVisibleCard(0)}>Question 1</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(1)}>Question 2</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(2)}>Question 3</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(3)}>Question 4</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(4)}>Question 5</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(5)}>Question 6</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setVisibleCard(6)}>Question 7</Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+
                                 <h2>{currentQuestion.title}</h2>
                                 <br />
                                 <h5>{currentQuestion.question}</h5>
@@ -141,8 +163,8 @@ function BasicQuestions() {
                                 <br></br>
                             <Row>
                                 <Button
-                                    //onClick={() => "submit action"}
-                                    disabled={visibleCard !== questions.length - 1}>
+                                    onClick={() => console.log(basicQuestionsAnswers)}
+                                    disabled={basicQuestionsProgress !== 100}>
                                     Submit Assessment
                                 </Button>
                             </Row>
@@ -176,6 +198,14 @@ function BasicQuestions() {
                                 disabled={visibleCard === questions.length - 1} 
                             >
                                 Skip
+                            </Button>
+                            <Button
+                                style={{ margin: '2%', width: '100px' }}
+                                onClick={() => handleAnswerChange(visibleCard, '')}
+
+                                disabled={basicQuestionsAnswers[visibleCard] === ""} 
+                            >
+                                Clear
                             </Button>
                         </Col>
                     </Row>

@@ -9,7 +9,7 @@ function BasicQuestions() {
 
     const questions = [
         {
-          title: "Question 1: Preferred Activities",
+          title: "Preferred Activities",
           question: "Which activity do you enjoy the most?",
           options: [
             "Solving puzzles or analyzing data",
@@ -20,7 +20,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 2: Ideal Work Environment",
+          title: "Ideal Work Environment",
           question: "What’s your preferred working environment?",
           options: [
             "Quiet and focused, ideally solo",
@@ -31,7 +31,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 3: Problem-Solving Approach",
+          title: "Problem-Solving Approach",
           question: "How do you usually solve problems?",
           options: [
             "Logically, by breaking them down into steps",
@@ -42,7 +42,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 4: Favorite Subject",
+          title: "Favorite Subject",
           question: "Which school subject did you (or do you) enjoy most?",
           options: [
             "Math or Science",
@@ -53,7 +53,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 5: Job Motivation",
+          title: "Job Motivation",
           question: "What motivates you most in a job?",
           options: [
             "Intellectual challenges",
@@ -64,7 +64,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 6: Routine Tolerance",
+          title: "Routine Tolerance",
           question: "How do you handle routine and repetition?",
           options: [
             "I don’t mind it as long as I can improve efficiency",
@@ -75,7 +75,7 @@ function BasicQuestions() {
           ]
         },
         {
-          title: "Question 7: Career Curiosity",
+          title: "Career Curiosity",
           question: "If you could shadow someone for a day, who would it be?",
           options: [
             "A scientist or software engineer",
@@ -117,31 +117,29 @@ function BasicQuestions() {
                     <br></br>
                     <br></br>
                     <br></br>
-                      <Row>
-                        <Col>
-                          
-                        </Col>
-                      </Row>
                         <Row className="justify-content-center mt-4">
                             <Col md={5} className="BasicQuestions-questionsContainers">
+                                <Row>
+                                  <span>
+                                  <h2>{currentQuestion.title}</h2>
+                                  <Dropdown className="BasicQuestions-questionsDropdown">
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        Question {visibleCard + 1}
+                                    </Dropdown.Toggle>
 
-                                <Dropdown>
-                                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                      Question {visibleCard + 1}
-                                  </Dropdown.Toggle>
-
-                                  <Dropdown.Menu>
-                                    <Dropdown.Item onClick={() => setVisibleCard(0)}>Question 1</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(1)}>Question 2</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(2)}>Question 3</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(3)}>Question 4</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(4)}>Question 5</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(5)}>Question 6</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setVisibleCard(6)}>Question 7</Dropdown.Item>
-                                  </Dropdown.Menu>
-                                </Dropdown>
-
-                                <h2>{currentQuestion.title}</h2>
+                                    <Dropdown.Menu>
+                                      <Dropdown.Item onClick={() => setVisibleCard(0)}>Question 1</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(1)}>Question 2</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(2)}>Question 3</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(3)}>Question 4</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(4)}>Question 5</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(5)}>Question 6</Dropdown.Item>
+                                      <Dropdown.Item onClick={() => setVisibleCard(6)}>Question 7</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                  </Dropdown>
+                                  </span>
+                                </Row>
+                                
                                 <br />
                                 <h5>{currentQuestion.question}</h5>
 
@@ -193,19 +191,14 @@ function BasicQuestions() {
                             </Button>
                             <Button
                                 style={{ margin: '2%', width: '100px' }}
-                                onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
+                                onClick={() => {
+                                  handleAnswerChange(visibleCard, '');
+                                  setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1));
+                                }}
 
                                 disabled={visibleCard === questions.length - 1} 
                             >
                                 Skip
-                            </Button>
-                            <Button
-                                style={{ margin: '2%', width: '100px' }}
-                                onClick={() => handleAnswerChange(visibleCard, '')}
-
-                                disabled={basicQuestionsAnswers[visibleCard] === ""} 
-                            >
-                                Clear
                             </Button>
                         </Col>
                     </Row>

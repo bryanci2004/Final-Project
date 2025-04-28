@@ -29,6 +29,12 @@
   margin: 2%;
 }
 
+.BasicQuestions-questionsDropdown{
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
 .BasicQuestions-homePageButton{
   margin-left: 62.5%;
 }

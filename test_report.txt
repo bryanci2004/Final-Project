@@ -5,13 +5,13 @@
   console.error
     Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
 
-      4 |
-      5 | test('renders learn react link', () => {
-    > 6 |   render(<App />);
-        |         ^
-      7 |   const linkElement = screen.getByText(/learn react/i);
-      8 |   expect(linkElement).toBeInTheDocument();
-      9 | });
+    [0m [90m 4 |[39m
+     [90m 5 |[39m test([32m'renders learn react link'[39m[33m,[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 6 |[39m   render([33m<[39m[33mApp[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m   |[39m         [31m[1m^[22m[39m
+     [90m 7 |[39m   [36mconst[39m linkElement [33m=[39m screen[33m.[39mgetByText([35m/learn react/i[39m)[33m;[39m
+     [90m 8 |[39m   expect(linkElement)[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m 9 |[39m })[33m;[39m[0m
 
       at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
       at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
@@ -26,32 +26,8 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 PASS src/App.test.tsx
-  ✓ renders learn react link (54 ms)
+  ✓ renders learn react link (66 ms)
 
--------------------------|---------|----------|---------|---------|-------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
--------------------------|---------|----------|---------|---------|-------------------
-All files                |    5.35 |        5 |    2.04 |    5.82 |                   
- src                     |   27.27 |    16.66 |   16.66 |   27.27 |                   
-  App.tsx                |      60 |       50 |   33.33 |      60 | 11,19-25          
-  Routing.tsx            |       0 |      100 |       0 |       0 | 8                 
-  index.tsx              |       0 |      100 |     100 |       0 | 7-19              
-  reportWebVitals.ts     |       0 |        0 |       0 |       0 | 3-10              
- src/Basic Questions     |       0 |        0 |       0 |       0 |                   
-  BasicQuestions.tsx     |       0 |        0 |       0 |       0 | 8-196             
- src/ChatGPT_API_disable |       0 |        0 |       0 |       0 |                   
-  ChatGptApi.tsx         |       0 |        0 |       0 |       0 | 6-26              
-  chatgptService.ts      |       0 |        0 |       0 |       0 | 4-26              
- src/Detailed Questions  |       0 |      100 |       0 |       0 |                   
-  DetailedQuestions.tsx  |       0 |      100 |       0 |       0 | 8-124             
- src/Home Page           |       0 |        0 |       0 |       0 |                   
-  HomePage.tsx           |       0 |        0 |       0 |       0 | 7-78              
--------------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:        3.244 s
-Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because
@@ -64,3 +40,27 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+------------------------|---------|----------|---------|---------|-------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------|---------|----------|---------|---------|-------------------
+All files               |    4.95 |     3.84 |    1.96 |    5.35 |                   
+ src                    |   27.27 |    16.66 |   16.66 |   27.27 |                   
+  App.tsx               |      60 |       50 |   33.33 |      60 | 11,19-25          
+  Routing.tsx           |       0 |      100 |       0 |       0 | 8                 
+  index.tsx             |       0 |      100 |     100 |       0 | 7-19              
+  reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
+ src/Basic Questions    |       0 |        0 |       0 |       0 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 10-213            
+ src/ChatGPT_API        |       0 |        0 |       0 |       0 |                   
+  ChatGptApi.tsx        |       0 |        0 |       0 |       0 | 6-26              
+  chatgptService.ts     |       0 |        0 |       0 |       0 | 6-25              
+ src/Detailed Questions |       0 |      100 |       0 |       0 |                   
+  DetailedQuestions.tsx |       0 |      100 |       0 |       0 | 8-124             
+ src/Home Page          |       0 |        0 |       0 |       0 |                   
+  HomePage.tsx          |       0 |        0 |       0 |       0 | 7-82              
+------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        3.274 s
+Ran all test suites.

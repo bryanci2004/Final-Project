@@ -79,7 +79,6 @@ function HomePage(): JSX.Element {
             style={{ width: '550px' }}
           />
           <Button onClick={handleSubmitKey}>Submit</Button>
-          <Button onClick={() => navigate("/ChatGPTAPI")}>ChatGPTAPI</Button>
         </Form>
       </div>
     </>

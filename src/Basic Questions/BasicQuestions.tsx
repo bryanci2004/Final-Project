@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Row, Spinner, ProgressBar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { askChatGPT } from "../ChatGPT_API/chatgptService";

@@ -4,13 +4,17 @@ import OpenAI from "openai";
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY!;
 //console.log("Loaded API Key:", process.env.REACT_APP_OPENAI_API_KEY);
 
-
+//The below line is the correct and safe way to use this API key in a React app.
+//const openai = new OpenAI({ apiKey }); 
+//The below function overrides safety net and allows browser use.
+// ⚠️ This is not recommended for production use, as it can expose your API key to the client-side code.
+// ⚠️ Use with caution and only in trusted environments.
 
 const openai = new OpenAI({
     apiKey,
     dangerouslyAllowBrowser: true,    // ⚠️ enables browser use
   });
-  
+
 
 export async function askChatGPT(prompt: string): Promise<string> {
     const response = await openai.chat.completions.create({

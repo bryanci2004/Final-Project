@@ -1,102 +1,97 @@
-.BasicQuestions-header{
+/* BasicQuestions.css */
+
+/* Header */
+.BasicQuestions-header {
   width: 100vw;
   height: 10vh;
   position: fixed;
+  top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
   background-color: rgb(31, 41, 50);
   color: white;
+  z-index: 1000;
 }
 
-.BasicQuestions-body{
+.buttons-header {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Body container */
+.BasicQuestions-body {
+  padding-top: 10vh;
   background-color: rgb(255, 255, 255);
-  height: 100vh;
-  width: 100vw;
+  min-height: calc(100vh - 10vh);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Question card */
 .BasicQuestions-questionsContainers {
   width: 60vw;
-  height: auto;
+  max-width: 800px;
   text-align: center;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #f8f9fa;
-  margin: 2%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.BasicQuestions-questionsDropdown{
-  display: flex;
-  justify-content: left;
-  align-items: left;
-}
-
-.BasicQuestions-homePageButton{
-  margin-left: 62.5%;
-}
-
-.rectangle-option {
-  width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-size: 1rem;
-  background-color: white;
+/* Question text */
+.question-text {
+  font-size: 1.1rem;
+  margin: 1rem 0;
   color: #333;
 }
 
-.rectangle-option:hover {
-  border-color: #007bff;
-  background-color: #f0f8ff;
+/* Options */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.rectangle-option.selected {
-  background-color: #007bff;
-  color: white;
-  border-color: #0056b3;
+.option-button {
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
+/* Navigation buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.navigation-buttons .btn {
+  min-width: 100px;
+}
+
+/* Progress bar */
 .BasicQuestions-ProgressBar {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 700px;
   height: 20px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #e0e0e0;
-  border: none;
 }
 
-/* For WebKit browsers (Chrome, Safari, Edge) */
-.BasicQuestions-ProgressBar::-webkit-progress-bar {
-  background-color: #e0e0e0;
-  border-radius: 10px;
-}
-
-.BasicQuestions-ProgressBar::-webkit-progress-value {
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  border-radius: 10px;
-  transition: width 0.4s ease-in-out;
-}
-
-/* For Firefox */
-.BasicQuestions-ProgressBar::-moz-progress-bar {
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  border-radius: 10px;
-  transition: width 0.4s ease-in-out;
-}
 /* Recommendation box inside the question container */
 .recommendation-box {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   padding: 1rem;
   border: 1px solid #007bff;
   border-radius: 8px;
   background: #f0f8ff;
   white-space: pre-wrap;
+  text-align: left;
 }

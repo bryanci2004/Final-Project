@@ -2,7 +2,7 @@ import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './BasicQuestions.css';
 import { useState } from "react";
-import { askChatGPT } from "../ChatGPT_API/chatgptService";
+//import { askChatGPT } from "../ChatGPT_API/chatgptService";
 
 // Test change
 
@@ -100,8 +100,8 @@ function BasicQuestions() {
     const [basicQuestionsAnswers, setBasicQuestionsAnswers] = useState(Array(7).fill(''));
     const [basicQuestionsProgress, setBasicQuestionsProgress] = useState(0);
     // UI state for ChatGPT integration
-    const [loading, setLoading] = useState<boolean>(false);
-    const [recommendation, setRecommendation] = useState<string | null>(null);
+//    const [loading, setLoading] = useState<boolean>(false);
+//    const [recommendation, setRecommendation] = useState<string | null>(null);
 
 
     function handleAnswerChange(index: number, value: string){
@@ -113,7 +113,7 @@ function BasicQuestions() {
         const progress = (answeredCount / questions.length) * 100;
         setBasicQuestionsProgress(progress);
     }
-    const questionArray: string[] = [];
+//    const questionArray: string[] = [];
 
     function testButton() {
       console.log("API Key:", apiKey);

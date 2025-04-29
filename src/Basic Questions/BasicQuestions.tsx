@@ -2,6 +2,14 @@ import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './BasicQuestions.css';
 import { useState } from "react";
+import { askChatGPT } from "../ChatGPT_API/chatgptService";
+
+
+// grab the raw JSON string you stored under “MYKEY”
+const raw = localStorage.getItem("MYKEY");
+// parse it (or fall back to an empty string)
+const apiKey = raw ? JSON.parse(raw) : "";
+
 
 function BasicQuestions() {
     
@@ -90,6 +98,10 @@ function BasicQuestions() {
     const [visibleCard, setVisibleCard] = useState(0);
     const [basicQuestionsAnswers, setBasicQuestionsAnswers] = useState(Array(7).fill(''));
     const [basicQuestionsProgress, setBasicQuestionsProgress] = useState(0);
+    // UI state for ChatGPT integration
+    const [loading, setLoading] = useState<boolean>(false);
+    const [recommendation, setRecommendation] = useState<string | null>(null);
+
 
     function handleAnswerChange(index: number, value: string){
         const updatedAnswers = [...basicQuestionsAnswers];
@@ -100,7 +112,11 @@ function BasicQuestions() {
         const progress = (answeredCount / questions.length) * 100;
         setBasicQuestionsProgress(progress);
     }
+    const questionArray: string[] = [];
 
+    function testButton() {
+      console.log("API Key:", apiKey);
+    }
     const currentQuestion = questions[visibleCard];
 
     
@@ -161,8 +177,8 @@ function BasicQuestions() {
                                 <br></br>
                             <Row>
                                 <Button
-                                    onClick={() => console.log(basicQuestionsAnswers)}
-                                    disabled={basicQuestionsProgress !== 100}>
+                                    onClick={() => testButton()}
+                                    disabled={visibleCard !== questions.length - 1}>
                                     Submit Assessment
                                 </Button>
                             </Row>

@@ -91,3 +91,12 @@
   border-radius: 10px;
   transition: width 0.4s ease-in-out;
 }
+/* Recommendation box inside the question container */
+.recommendation-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  background: #f0f8ff;
+  white-space: pre-wrap;
+}

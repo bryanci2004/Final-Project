@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";              // ← added us
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
+import background from './beautiful-underwater-landscape-with-fish-corals.jpg';
 
 const STORAGE_KEY = "MYKEY";
 
@@ -40,7 +41,7 @@ function HomePage(): JSX.Element {
         <h1>Home Page</h1>
       </header>
 
-      <div className="HomePage-body">
+      <div className="HomePage-body" style={{backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: '1920px'}}>
         <Container>
           <Row className="justify-content-center text-center">
             <h1> Discover Your Dream Career with AI! </h1>
@@ -68,7 +69,7 @@ function HomePage(): JSX.Element {
         </Container>
       </div>
 
-      <div className="HomePage-footer text-center mt-4">
+      <div className="HomePage-footer text-center ">
         <Form className="d-flex justify-content-center align-items-center gap-3">
           <Form.Label className="mb-0"><strong>API Key:</strong></Form.Label>
           <Form.Control

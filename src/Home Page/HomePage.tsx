@@ -55,7 +55,7 @@ function HomePage(): JSX.Element {
 
           <Row className="justify-content-center mt-4">
             <Col md={5} className="HomePage-questionsContainers">
-              <h2>Quick & Easy: The Basic Career Quiz</h2>
+              <h2>Shallow Waters: The Basic Career Quiz</h2>
               <p>Short on time? Answer a few simple questions and get an instant recommendation for careers that match your interests and skills.</p>
               <Button onClick={() => navigate("/BasicQuestions")}>Basic Questions</Button>
             </Col>

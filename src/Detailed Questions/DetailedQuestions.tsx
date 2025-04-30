@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import './DetailedQuestions.css';
 import { useState } from "react";
@@ -74,7 +74,27 @@ function DetailedQuestions() {
                 <br></br>
                         <Row className="justify-content-center mt-4">
                             <Col md={5} className="DetailedQuestions-questionsContainers">
-                                <h2>{currentQuestion.title}</h2>
+                            <Row>
+                                <Col>
+                                    <Dropdown className="BasicQuestions-questionsDropdown">
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        Question {visibleCard + 1}
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item onClick={() => setVisibleCard(0)}>Question 1</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(1)}>Question 2</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(2)}>Question 3</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(3)}>Question 4</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(4)}>Question 5</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(5)}>Question 6</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(6)}>Question 7</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    </Dropdown>
+                                </Col>
+                                <Col>
+                                    <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
+                                </Col>
+                            </Row>
                                 <br />
                                 <h5>{currentQuestion.question}</h5>
 

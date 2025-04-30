@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Col, Container, Row, Spinner, ProgressBar } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row, Spinner, ProgressBar, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { askChatGPT } from "../chatgptService";
 import "./BasicQuestions.css";
@@ -143,6 +143,12 @@ export default function BasicQuestions(): JSX.Element {
     }
   };
 
+  useEffect(() => {
+    if (progress === 100) {
+      alert("🎉 You’ve answered all the questions! Feel free to review or submit.");
+    }
+  }, [progress]);
+  
   return (
     <>
       <header className="BasicQuestions-header">
@@ -156,9 +162,28 @@ export default function BasicQuestions(): JSX.Element {
       <Container className="BasicQuestions-body">
         <Row className="justify-content-center">
           <Col md={6} className="BasicQuestions-questionsContainers">
-            <h2>{currentQuestion.title}</h2>
+          <Row>
+          <Col>
+            <Dropdown className="BasicQuestions-questionsDropdown">
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Question {currentIndex + 1}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => setCurrentIndex(0)}>Question 1</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(1)}>Question 2</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(2)}>Question 3</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(3)}>Question 4</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(4)}>Question 5</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(5)}>Question 6</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCurrentIndex(6)}>Question 7</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
+          <Col>
+            <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
+          </Col>
+          </Row>
             <p className="question-text">{currentQuestion.question}</p>
-
             <div className="options-container">
               {currentQuestion.options.map((opt) => (
                 <Button
@@ -177,12 +202,15 @@ export default function BasicQuestions(): JSX.Element {
                 Prev
               </Button>
               {isLast ? (
-                <Button onClick={handleSubmit} disabled={loading}>
+                <Button onClick={handleSubmit} disabled={loading || answers[currentIndex] === ""}>
                   {loading ? <Spinner animation="border" size="sm" /> : "Submit"}
                 </Button>
               ) : (
-                <Button onClick={goToNext}>Next</Button>
+                <Button onClick={goToNext} disabled={answers[currentIndex] === ""}>Next</Button>
               )}
+              <Button onClick={() => {handleAnswerChange("skipped"); goToNext();}} className="me-2">
+                Skip
+              </Button>
             </div>
 
             <ProgressBar now={progress} className="BasicQuestions-ProgressBar mt-3" />

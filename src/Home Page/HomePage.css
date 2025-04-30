@@ -1,38 +1,51 @@
-.HomePage-header{
+.HomePage-header,
+.HomePage-footer {
     width: 100vw;
-    height: 10vh;
+    height: 10vh; /* same for header and footer */
     position: fixed;
+    top: 0; /* for header */
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(31, 41, 50);
     color: white;
+
+    /* Glass effect */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.HomePage-footer {
+    top: auto;
+    bottom: 0;
+    height: 7vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .HomePage-body{
-    background-color: rgb(255, 255, 255);
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+
 }
 
 .HomePage-questionsContainers {
     text-align: center;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f8f9fa;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
     margin: 2%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-.HomePage-footer{
-    width: 100vw;
-    height: 7vh;
-    background-color: rgb(31, 41, 50);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

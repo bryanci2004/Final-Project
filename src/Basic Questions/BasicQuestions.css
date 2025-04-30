@@ -1,4 +1,4 @@
-/* BasicQuestions.css */
+/* BasicQuestions.css - Underwater Theme */
 
 /* Header */
 .BasicQuestions-header {
@@ -10,8 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  background-color: rgb(31, 41, 50);
-  color: white;
+  background-color: #013a63; /* Deep ocean blue */
+  color: #e0f7fa; /* Soft aqua */
   z-index: 1000;
 }
 
@@ -22,8 +22,10 @@
 
 /* Body container */
 .BasicQuestions-body {
+  height: 100vh;
+  min-width: 100vw;
+  background-color: #225c73;
   padding-top: 10vh;
-  background-color: rgb(255, 255, 255);
   min-height: calc(100vh - 10vh);
   display: flex;
   justify-content: center;
@@ -36,17 +38,17 @@
   max-width: 800px;
   text-align: center;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #5dade2;
   border-radius: 10px;
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #f0faff; /* soft underwater glow */
+  box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
 }
 
 /* Question text */
 .question-text {
   font-size: 1.1rem;
   margin: 1rem 0;
-  color: #333;
+  color: #034f84; /* Rich marine blue */
 }
 
 /* Options */
@@ -64,6 +66,13 @@
   padding: 0.75rem 1rem;
   border-radius: 8px;
   font-size: 1rem;
+  background-color: #d0f0fd; /* light aqua */
+  border: 1px solid #79c2d0;
+  transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+  background-color: #3d6e81; /* hover aqua */
 }
 
 /* Navigation buttons */
@@ -76,6 +85,16 @@
 
 .navigation-buttons .btn {
   min-width: 100px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons .btn:hover {
+  background-color: #023e8a;
 }
 
 /* Progress bar */
@@ -83,15 +102,25 @@
   height: 20px;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #caf0f8;
 }
 
 /* Recommendation box inside the question container */
 .recommendation-box {
   margin-top: 1.5rem;
   padding: 1rem;
-  border: 1px solid #007bff;
+  border: 1px solid #00b4d8;
   border-radius: 8px;
-  background: #f0f8ff;
+  background: #e0fbfc;
   white-space: pre-wrap;
   text-align: left;
+}
+
+/* Dropdown and title styling */
+.BasicQuestions-questionsDropdown,
+.BasicQuestions-questionsTitle {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding-left: 0;
 }

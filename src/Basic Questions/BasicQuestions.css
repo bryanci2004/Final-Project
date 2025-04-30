@@ -95,3 +95,17 @@
   white-space: pre-wrap;
   text-align: left;
 }
+
+.BasicQuestions-questionsDropdown{
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding-left: 0;
+}
+
+.BasicQuestions-questionsTitle {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding-left: 0;
+}

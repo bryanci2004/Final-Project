@@ -1,57 +1,76 @@
-/* BasicQuestions.css - Underwater Theme */
+/* BasicQuestions.css */
 
-/* Header */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Fixed header */
 .BasicQuestions-header {
-  width: 100vw;
+  width: 100%;
   height: 10vh;
   position: fixed;
   top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  background-color: #013a63; /* Deep ocean blue */
-  color: #e0f7fa; /* Soft aqua */
+  background-color: rgb(31, 41, 50);
+  color: white;
   z-index: 1000;
 }
 
-.buttons-header {
-  display: flex;
-  gap: 1rem;
-}
-
-/* Body container */
 .BasicQuestions-body {
-  height: 100vh;
-  min-width: 100vw;
-  background-color: #225c73;
-  padding-top: 10vh;
-  min-height: calc(100vh - 10vh);
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  overflow-y: auto;      /* enable scrolling within this area */
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
-/* Question card */
+
+/* Question card container: auto height, no inner scroll */
 .BasicQuestions-questionsContainers {
   width: 60vw;
   max-width: 800px;
+  /* allow contents to expand page length */
+  height: auto;
+  overflow: visible;
   text-align: center;
   padding: 20px;
-  border: 1px solid #5dade2;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: #f0faff; /* soft underwater glow */
-  box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
 }
 
-/* Question text */
+/* Dropdown styling */
+.BasicQuestions-questionsDropdown {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Question text styling */
 .question-text {
   font-size: 1.1rem;
   margin: 1rem 0;
-  color: #034f84; /* Rich marine blue */
+  color: #333;
 }
 
-/* Options */
+/* Options list styling */
 .options-container {
   display: flex;
   flex-direction: column;
@@ -66,13 +85,6 @@
   padding: 0.75rem 1rem;
   border-radius: 8px;
   font-size: 1rem;
-  background-color: #d0f0fd; /* light aqua */
-  border: 1px solid #79c2d0;
-  transition: background-color 0.3s ease;
-}
-
-.option-button:hover {
-  background-color: #3d6e81; /* hover aqua */
 }
 
 /* Navigation buttons */
@@ -85,42 +97,58 @@
 
 .navigation-buttons .btn {
   min-width: 100px;
-  background-color: #0077b6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease;
 }
 
-.navigation-buttons .btn:hover {
-  background-color: #023e8a;
-}
-
-/* Progress bar */
+/* Progress bar styling */
 .BasicQuestions-ProgressBar {
   height: 20px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #caf0f8;
 }
 
-/* Recommendation box inside the question container */
+/* Recommendation box styling */
 .recommendation-box {
   margin-top: 1.5rem;
-  padding: 1rem;
-  border: 1px solid #00b4d8;
+  padding: 0.75rem;
+  border: 1px solid #007bff;
   border-radius: 8px;
-  background: #e0fbfc;
+  background: #f0f8ff;
   white-space: pre-wrap;
   text-align: left;
+  overflow: visible;      /* ensure full content displayed */
+  line-height: 1.3;
+  /* remove any maximum height to allow full expansion */
+  max-height: none !important;
+  height: auto;
 }
 
-/* Dropdown and title styling */
-.BasicQuestions-questionsDropdown,
-.BasicQuestions-questionsTitle {
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  padding-left: 0;
+/* Markdown element adjustments for tighter spacing */
+.recommendation-box h2,
+.recommendation-box h3,
+.recommendation-box h4 {
+  line-height: .01;
+}
+
+.recommendation-box h2{
+  margin-top: 0.25rem;
+  color: #0056b3
+  
+}
+.recommendation-box h3{
+  color: yellowgreen;
+  font-weight: 400;
+  margin-top: 0.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.recommendation-box hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0.01rem 0;
+}
+
+.recommendation-box ul,
+.recommendation-box ol {
+  /* horizontal indent; increase or decrease this value */
+  padding-left: 1.5rem;
 }

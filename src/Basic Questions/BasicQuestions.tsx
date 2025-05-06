@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Button, Col, Container, Row, Spinner, ProgressBar, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { askChatGPT } from "../chatgptService";
@@ -90,7 +92,6 @@ const questions: Question[] = [
   }
 ];
 
-
 export default function BasicQuestions(): JSX.Element {
   const navigate = useNavigate();
 
@@ -127,11 +128,49 @@ export default function BasicQuestions(): JSX.Element {
 
   const handleSubmit = async (): Promise<void> => {
     setLoading(true);
-    const prompt = [
-      "A user completed the basic career quiz with these answers:",
-      ...answers.map((ans, i) => `Q${i + 1}: ${ans || "(no answer)"}`),
-      "\nBased on these responses, suggest 2–3 suitable career paths and explain why.",
-    ].join("\n");
+
+    const answerLines = answers
+      .map((ans, i) => `Q${i + 1}: ${ans || "(no answer)"}`)
+      .join("\n");
+
+    const template = `
+You are a professional career advisor. For each recommendation, follow this exact format:
+
+### **Recommended Career: <Career Title>**
+
+---
+
+## Why This Fits You  
+- **Bullet 1**  
+- **Bullet 2**  
+- **Bullet 3**
+
+## Day‑to‑Day Responsibilities  
+- Short bullet or sentence  
+
+## Salary & Outlook  
+- **Median Annual Wage:** …  
+- **Entry‑Level:** …  
+- **Experienced:** …  
+- **Job Growth:** …
+
+## Top Employers & Work Environments  
+- Employer 1  
+- Employer 2  
+- Employer 3
+
+## Key Skills & Certifications  
+- Skill/Certification 1  
+- Skill/Certification 2  
+
+## Next Steps to Get Started  
+1. Action step 1  
+2. Action step 2  
+
+Now provide **3** such recommendations. Do not add any other sections.
+`.trim();
+
+    const prompt = [template, "", `A user completed the quiz with these answers:\n${answerLines}`,].join("\n");
 
     try {
       const rec = await askChatGPT(prompt);
@@ -162,27 +201,25 @@ export default function BasicQuestions(): JSX.Element {
       <Container className="BasicQuestions-body">
         <Row className="justify-content-center">
           <Col md={6} className="BasicQuestions-questionsContainers">
-          <Row>
-          <Col>
-            <Dropdown className="BasicQuestions-questionsDropdown">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Question {currentIndex + 1}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setCurrentIndex(0)}>Question 1</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(1)}>Question 2</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(2)}>Question 3</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(3)}>Question 4</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(4)}>Question 5</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(5)}>Question 6</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCurrentIndex(6)}>Question 7</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-          <Col>
-            <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
-          </Col>
-          </Row>
+            <Row>
+              <Col>
+                <Dropdown className="BasicQuestions-questionsDropdown">
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Question {currentIndex + 1}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    {questions.map((_, idx) => (
+                      <Dropdown.Item key={idx} onClick={() => setCurrentIndex(idx)}>
+                        Question {idx + 1}
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
+              </Col>
+            </Row>
             <p className="question-text">{currentQuestion.question}</p>
             <div className="options-container">
               {currentQuestion.options.map((opt) => (
@@ -217,7 +254,7 @@ export default function BasicQuestions(): JSX.Element {
 
             {recommendation && (
               <div className="recommendation-box mt-4">
-                {recommendation}
+                <ReactMarkdown remarkPlugins={[remarkGfm]} children={recommendation} />
               </div>
             )}
           </Col>

@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Final-Project/static/css/main.d3195154.css",
-    "main.js": "/Final-Project/static/js/main.132cbec6.js",
+    "main.css": "/Final-Project/static/css/main.939a4e1f.css",
+    "main.js": "/Final-Project/static/js/main.c51d110f.js",
     "static/js/453.bad6c33a.chunk.js": "/Final-Project/static/js/453.bad6c33a.chunk.js",
     "static/media/beautiful-underwater-landscape-with-fish-corals.jpg": "/Final-Project/static/media/beautiful-underwater-landscape-with-fish-corals.5d08019d9f9e8a073abf.jpg",
     "static/media/logo.svg": "/Final-Project/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Final-Project/index.html",
-    "main.d3195154.css.map": "/Final-Project/static/css/main.d3195154.css.map",
-    "main.132cbec6.js.map": "/Final-Project/static/js/main.132cbec6.js.map",
+    "main.939a4e1f.css.map": "/Final-Project/static/css/main.939a4e1f.css.map",
+    "main.c51d110f.js.map": "/Final-Project/static/js/main.c51d110f.js.map",
     "453.bad6c33a.chunk.js.map": "/Final-Project/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3195154.css",
-    "static/js/main.132cbec6.js"
+    "static/css/main.939a4e1f.css",
+    "static/js/main.c51d110f.js"
   ]
 }

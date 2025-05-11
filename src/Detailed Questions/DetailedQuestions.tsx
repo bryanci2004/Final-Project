@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import './DetailedQuestions.css';
 import { useState } from "react";
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { askChatGPT } from "../chatgptService";
+import { Spinner } from "react-bootstrap";
+
 function DetailedQuestions() {
     
      const navigate = useNavigate();
@@ -42,9 +47,83 @@ function DetailedQuestions() {
      const [detailedQuestionsAnswers, setDetailedQuestionsAnswers] = useState(Array(7).fill(''));
      const [detailedQuestionsProgress, setDetailedQuestionsProgress] = useState(0);
 
+     
+    // ChatGPT integration state
+    const [loading, setLoading] = useState<boolean>(false);
+    const [recommendation, setRecommendation] = useState<string | null>(null);
+
+    // helper to know when we're on the last card
+    const isLast = visibleCard === questions.length - 1;
+
  
-    
+    async function handleSubmit(): Promise<void> {
+        setLoading(true);
+        console.log("All detailed answers:", detailedQuestionsAnswers);
+        // build a simple “Q1: …” list of the user’s detailed answers
+        // Build a list of “Question: …” + “Answer: …” pairs
+        const qaLines = questions.map((q, i) =>
+            `Q${i + 1}: ${q.question}\nA${i + 1}: ${detailedQuestionsAnswers[i] || "(no answer)"}`
+        ).join("\n\n");
+  
+      
+        // the same structured prompt template you used in BasicQuestions
+        const template = `
+You are a professional career advisor. For each recommendation, follow this exact format:
+
+### **Recommended Career: <Career Title>**
+
+---
+
+## Why This Fits You  
+- **Bullet 1**  
+- **Bullet 2**  
+- **Bullet 3**
+
+## Day‑to‑Day Responsibilities  
+- Short bullet or sentence  
+
+## Salary & Outlook  
+- **Median Annual Wage:** …  
+- **Entry‑Level:** …  
+- **Experienced:** …  
+- **Job Growth:** …
+
+## Top Employers & Work Environments  
+- Employer 1  
+- Employer 2  
+- Employer 3
+
+## Key Skills & Certifications  
+- Skill/Certification 1  
+- Skill/Certification 2  
+
+## Next Steps to Get Started  
+1. Action step 1  
+2. Action step 2  
+
+Now provide **3** such recommendations. Do not add any other sections.
+      `.trim();
+      
+        // stitch template + actual answers
+        const prompt = [
+            template,
+            "",
+            "Here are the questions and the user’s answers:",
+            qaLines,
+          ].join("\n");
+                console.log("Prompt going out to GPT:\n", prompt);
+        try {
+          const rec = await askChatGPT(prompt);
+          setRecommendation(rec);
+        } catch {
+          setRecommendation("❗ Error: please check your API key or network.");
+        } finally {
+          setLoading(false);
+        }
+      }
+      
      function handleAnswerChange(index: number, value: string) {
+        console.log(`Q${index+1} changed →`, value);
         const updatedAnswers = [...detailedQuestionsAnswers]; // spread as array
         updatedAnswers[index] = value;
         setDetailedQuestionsAnswers(updatedAnswers);
@@ -56,7 +135,7 @@ function DetailedQuestions() {
 
  
      const currentQuestion = questions[visibleCard];
- 
+    
      
     return (
         <>
@@ -108,14 +187,22 @@ function DetailedQuestions() {
                                     style={{height: '35vh'}}
                                 />
                             </Form>
+                            
                             <br></br>
                             <Row>
                                 <Button
-                                    //onClick={() => "submit action"}
-                                    disabled={visibleCard !== questions.length - 1}>
-                                    Submit Assessment
+                                onClick={handleSubmit}
+                                disabled={!isLast || loading}>
+                                {loading
+                                    ? <Spinner animation="border" size="sm" />
+                                    : "Submit Assessment"}
                                 </Button>
                             </Row>
+                                {recommendation && (
+                                <div className="recommendation-box mt-3">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} children={recommendation} />
+                                </div>
+                                )}
                             </Col>
                         </Row>
                         <Row>

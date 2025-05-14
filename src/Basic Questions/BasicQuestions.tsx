@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button, Col, Container, Row, Spinner, ProgressBar, Dropdown } from "react-bootstrap";
+import { Button, Col, Container, Row, Spinner, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { askChatGPT } from "../chatgptService";
 import "./BasicQuestions.css";

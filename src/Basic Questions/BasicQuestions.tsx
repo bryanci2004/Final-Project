@@ -5,6 +5,8 @@ import { Button, Col, Container, Row, Spinner, ProgressBar, Dropdown } from "rea
 import { useNavigate } from "react-router-dom";
 import { askChatGPT } from "../chatgptService";
 import "./BasicQuestions.css";
+import background from './2110.w023.n001.1169B.p1.1169.jpg';
+import logo from './Logo.png'
 
 interface Question {
   title: string;
@@ -44,6 +46,39 @@ const questions: Question[] = [
       "Empathetically, by considering everyone’s feelings",
       "Practically, by getting straight to the solution",
       "Strategically, by evaluating the big picture"
+    ]
+  },
+  {
+    title: "Team Dynamics",
+    question: "What role do you usually take on in group projects?",
+    options: [
+      "The researcher or planner",
+      "The idea generator or presenter",
+      "The supporter or mediator",
+      "The builder or doer",
+      "The leader or coordinator"
+    ]
+  },
+  {
+    title: "Success Definition",
+    question: "How do you define success in your career?",
+    options: [
+      "Solving complex problems or innovating",
+      "Expressing myself and being original",
+      "Helping others and making an impact",
+      "Creating or fixing something useful",
+      "Reaching goals and influencing others"
+    ]
+  },
+  {
+    title: "Biggest Strength",
+    question: "Which of these do you consider your biggest strength?",
+    options: [
+      "Analytical thinking",
+      "Creativity and imagination",
+      "Empathy and communication",
+      "Hands-on skills and precision",
+      "Leadership and decision-making"
     ]
   },
   {
@@ -188,17 +223,32 @@ Now provide **3** such recommendations. Do not add any other sections.
     }
   }, [progress]);
   
+  
   return (
     <>
       <header className="BasicQuestions-header">
-        <h1>Basic Questions</h1>
+        <div className="logo-container">
+          <img src={logo} alt="a logo" className="logo-img" />
+        </div>
+        <div className="title-container-BQ">
+          <h1 className="homepage-title">DepthQuest</h1>
+        </div>
         <div className="buttons-header">
-          <Button variant="link" onClick={() => navigate("/")}>Home Page</Button>
-          <Button variant="link" onClick={() => navigate("/DetailedQuestions")}>Switch Quiz</Button>
+          <Button onClick={() => navigate("/")}>Home Page</Button>
+          <Button onClick={() => navigate("/DetailedQuestions")}>Switch Quiz</Button>
         </div>
       </header>
 
-      <Container className="BasicQuestions-body">
+      <Container
+          className="BasicQuestions-body"
+          style={{
+            backgroundImage: `url(${background})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        >
         <Row className="justify-content-center">
           <Col md={6} className="BasicQuestions-questionsContainers">
             <Row>
@@ -224,13 +274,13 @@ Now provide **3** such recommendations. Do not add any other sections.
             <div className="options-container">
               {currentQuestion.options.map((opt) => (
                 <Button
-                  key={opt}
-                  variant={answers[currentIndex] === opt ? "primary" : "outline-secondary"}
-                  onClick={() => handleAnswerChange(opt)}
-                  className="option-button"
-                >
-                  {opt}
-                </Button>
+                key={opt}
+                variant="outline-secondary"
+                onClick={() => handleAnswerChange(opt)}
+                className={`option-button ${answers[currentIndex] === opt ? "selected" : ""}`}
+              >
+                {opt}
+              </Button>
               ))}
             </div>
 

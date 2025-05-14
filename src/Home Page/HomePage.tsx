@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";              // ← added us
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
-import background from './beautiful-underwater-landscape-with-fish-corals.jpg';
+import background from './rjp7_fazl_230302.jpg';
+import logo from './Logo.png';
 
 const STORAGE_KEY = "MYKEY";
 
@@ -38,18 +39,23 @@ function HomePage(): JSX.Element {
   return (
     <>
       <header className="HomePage-header">
-        <h1>Home Page</h1>
+        <div className="logo-container">
+          <img src={logo} alt="a logo" className="logo-img" />
+        </div>
+        <div className="title-container">
+          <h1 className="homepage-title">DepthQuest</h1>
+        </div>
       </header>
 
       <div className="HomePage-body" style={{backgroundImage: `url(${background})`, backgroundPosition: 'center', backgroundSize: '1920px'}}>
         <Container>
           <Row className="justify-content-center text-center">
-            <h1> Discover Your Dream Career with AI! </h1>
+            <h1> Embark on Your Career Voyage! </h1>
             <p className="lead">
-              Are you ready to unlock your full potential? Take our AI-powered career
-              quiz and get personalized insights into the best career paths for you.
-              Whether you're looking for a quick recommendation or an in-depth
-              analysis, we’ve got you covered!
+                Welcome aboard <strong>DepthQuest</strong> — where your career journey dives deep.  
+                Navigate your future with our AI-powered quiz that surfaces personalized career paths  
+                based on your unique talents and aspirations. Whether you're testing the waters  
+                or diving into the depths, your next big adventure begins here.
             </p>
           </Row>
 

@@ -307,7 +307,11 @@ Now provide **3** such recommendations. Do not add any other sections.
               </Button>
             </div>
 
-            <ProgressBar now={progress} className="BasicQuestions-ProgressBar mt-3" />
+            <Row>
+                    <Col className="d-flex justify-content-center">
+                        <progress value={progress} max={100} className="DetailedQuestions-ProgressBar"/>
+                    </Col>
+                </Row>
 
             {recommendation && (
               <div className="recommendation-box mt-4">

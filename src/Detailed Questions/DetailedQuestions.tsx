@@ -7,6 +7,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { askChatGPT } from "../chatgptService";
 import { Spinner } from "react-bootstrap";
+import logo from './Logo.png';
+import background from './4Z_2101.w020.n001.999A.p30.999.jpg';
 
 function DetailedQuestions() {
     
@@ -14,31 +16,31 @@ function DetailedQuestions() {
  
      const questions = [
          {
-             title: "Question 1: Long-Term Career Goals",
+             title: "Long-Term Career Goals",
              question: "How does your daily commute impact your overall job satisfaction and long-term career goals? Would a shorter or more flexible commute change how you view your current or future roles?",
          },
          {
-             title: "Question 2: Work Preferences",
+             title: "Work Preferences",
              question: "What aspects of remote versus in-office work environments do you find most energizing or draining? How do these preferences influence your productivity, creativity, and sense of connection with your team?",
          },
          {
-             title: "Question 3: Collaboration Style",
+             title: "Collaboration Style",
              question: "When collaborating on a project, what role do you naturally gravitate toward, and how does working in a team setting challenge or enhance your effectiveness? How do you handle differences in work styles or opinions?",
          },
          {
-             title: "Question 4: Learning Preferences",
+             title: "Learning Preferences",
              question: "Can you describe a time when you successfully learned a new skill or concept—what methods helped you most? How do you adapt your learning style based on the complexity or urgency of a situation?",
          },
          {
-             title: "Question 5: Work-Life Balance",
+             title: "Work-Life Balance",
              question: "How do you define a healthy work-life balance for yourself, and what boundaries or routines help you maintain it? How has your view of balance evolved throughout your career or personal life?",
          },
          {
-             title: "Question 6: Time Management",
+             title: "Time Management",
              question: "When during the day do you feel most focused and productive, and how do you structure your time to align with your natural energy cycles? Have you developed any personal routines that significantly improve your time management?",
          },
          {
-             title: "Question 7: Job Security",
+             title: "Job Security",
              question: "How do you evaluate risk and stability when making career decisions? What trade-offs are you willing to accept for greater security or greater opportunity, and how do those choices reflect your personal values or goals?",
          },
      ];
@@ -139,18 +141,29 @@ Now provide **3** such recommendations. Do not add any other sections.
      
     return (
         <>
-       <header className="DetailedQuestions-header">
-            <h1>Detailed Questions </h1>
-            <Button onClick={() => { navigate("/"); }} className="DetailedQuestions-homePageButton">Home Page</Button>
-            <Button onClick={() => { navigate("/BasicQuestions"); }} >Switch Quiz</Button>
-        </header>
+       <header className="BasicQuestions-header">
+        <div className="logo-container">
+          <img src={logo} alt="a logo" className="logo-img" />
+        </div>
+        <div className="title-container-BQ">
+          <h1 className="homepage-title">DepthQuest</h1>
+        </div>
+        <div className="buttons-header">
+          <Button onClick={() => navigate("/")}>Home Page</Button>
+          <Button onClick={() => navigate("/BasicQuestions")}>Switch Quiz</Button>
+        </div>
+      </header>
 
-        <div className="DetailedQuestions-body">
-            <Container>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+        <Container
+        className="DetailedQuestions-body"
+          style={{
+            backgroundImage: `url(${background})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        >
                         <Row className="justify-content-center mt-4">
                             <Col md={5} className="DetailedQuestions-questionsContainers">
                             <Row>
@@ -174,9 +187,9 @@ Now provide **3** such recommendations. Do not add any other sections.
                                     <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
                                 </Col>
                             </Row>
-                                <br />
-                                <h5>{currentQuestion.question}</h5>
 
+                                <h5>{currentQuestion.question}</h5>
+                            <div className="options-container">
                                 <Form className="d-flex flex-column align-items-start gap-3 mt-3">
                                 <Form.Control
                                     as="textarea"
@@ -187,8 +200,8 @@ Now provide **3** such recommendations. Do not add any other sections.
                                     style={{height: '35vh'}}
                                 />
                             </Form>
+                            </div>
                             
-                            <br></br>
                             <Row>
                                 <Button
                                 onClick={handleSubmit}
@@ -205,13 +218,7 @@ Now provide **3** such recommendations. Do not add any other sections.
                                 )}
                             </Col>
                         </Row>
-                        <Row>
-                        <Col className="d-flex justify-content-center">
-                        <progress value={detailedQuestionsProgress} max={100} className="DetailedQuestions-ProgressBar"/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className="d-flex justify-content-center">
+                        <div className="navigation-buttons">
                             <Button
                                 style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.max(0, prev - 1))}
@@ -234,11 +241,13 @@ Now provide **3** such recommendations. Do not add any other sections.
                             >
                                 Skip
                             </Button>
+                            </div>
+                <Row>
+                    <Col className="d-flex justify-content-center">
+                        <progress value={detailedQuestionsProgress} max={100} className="DetailedQuestions-ProgressBar"/>
                     </Col>
                 </Row>
             </Container>
-
-        </div>
         </>
     );
   }

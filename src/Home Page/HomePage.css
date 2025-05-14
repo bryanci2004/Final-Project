@@ -1,29 +1,54 @@
-.HomePage-header,
-.HomePage-footer {
-    width: 100vw;
-    height: 10vh; /* same for header and footer */
-    position: fixed;
-    top: 0; /* for header */
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    /* Glass effect */
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+.HomePage-header {
+    width: 100vw;
+    height: 12vh; /* same for header and footer */
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: relative;
+    background-color: #73d5ff;
 }
+
+.logo-container {
+    flex: 0 0 auto;
+  }
+  
+  .logo-img {
+    height: 60px;
+    width: auto;
+  }
+  
+  .title-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: left;
+  }
+  
+  .homepage-title {
+    color: #013761;
+    margin: 0;
+    font-weight: 1000;
+  }
 
 .HomePage-footer {
     top: auto;
     bottom: 0;
     height: 7vh;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #013761;
+    background-color: #73d5ff;
 }
 
 .HomePage-body{
@@ -32,7 +57,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #3e3331;
 
 }
 
@@ -44,7 +69,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
+    color: #3e3331;
     margin: 2%;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }

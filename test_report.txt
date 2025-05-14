@@ -26,7 +26,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 PASS src/App.test.tsx
-  ✓ renders learn react link (59 ms)
+  ✓ renders learn react link (58 ms)
 
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
@@ -43,7 +43,7 @@ go away.[0m
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |    4.13 |      2.5 |    1.92 |    4.47 |                   
+All files               |    3.94 |     2.38 |    1.88 |    4.28 |                   
  src                    |   20.68 |     8.33 |   14.28 |   20.68 |                   
   App.tsx               |      60 |       50 |   33.33 |      60 | 11,19-25          
   Routing.tsx           |       0 |      100 |       0 |       0 | 8                 
@@ -53,12 +53,12 @@ All files               |    4.13 |      2.5 |    1.92 |    4.47 |
  src/Basic Questions    |       0 |        0 |       0 |       0 |                   
   BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 17-305            
  src/Detailed Questions |       0 |        0 |       0 |       0 |                   
-  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 15-238            
+  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 15-246            
  src/Home Page          |       0 |        0 |       0 |       0 |                   
   HomePage.tsx          |       0 |        0 |       0 |       0 | 9-72              
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        3.35 s
+Time:        3.331 s
 Ran all test suites.

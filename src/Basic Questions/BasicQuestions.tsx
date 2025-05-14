@@ -141,7 +141,13 @@ export default function BasicQuestions(): JSX.Element {
   const isFirst = currentIndex === 0;
   const isLast = currentIndex === questions.length - 1;
 
+  // Log answers whenever they change
+  useEffect(() => {
+    console.log("Updated answers state:", answers);
+  }, [answers]);
+
   const handleAnswerChange = (option: string) => {
+    console.log(`Q${currentIndex+1} changed →`, option);
     const updated = [...answers];
     updated[currentIndex] = option;
     setAnswers(updated);
@@ -150,23 +156,24 @@ export default function BasicQuestions(): JSX.Element {
   };
 
   const goToPrevious = () => {
-    if (!isFirst) {
-      setCurrentIndex((idx) => idx - 1);
-    }
+    if (!isFirst) setCurrentIndex((idx) => idx - 1);
   };
 
   const goToNext = () => {
-    if (!isLast) {
-      setCurrentIndex((idx) => idx + 1);
-    }
+    if (!isLast) setCurrentIndex((idx) => idx + 1);
   };
 
   const handleSubmit = async (): Promise<void> => {
     setLoading(true);
 
-    const answerLines = answers
-      .map((ans, i) => `Q${i + 1}: ${ans || "(no answer)"}`)
-      .join("\n");
+    console.log("All basic answers:", answers);
+    // Pair questions and answers
+    const qaLines = questions
+      .map((q, i) =>
+        `Q${i+1}: ${q.question}\nA${i+1}: ${answers[i] || "(no answer)"}`
+      )
+      .join("\n\n");
+    console.log("Prompt Q&A lines:\n", qaLines);
 
     const template = `
 You are a professional career advisor. For each recommendation, follow this exact format:
@@ -205,7 +212,8 @@ You are a professional career advisor. For each recommendation, follow this exac
 Now provide **3** such recommendations. Do not add any other sections.
 `.trim();
 
-    const prompt = [template, "", `A user completed the quiz with these answers:\n${answerLines}`,].join("\n");
+    const prompt = [template, "", "Here are the questions and answers:", qaLines].join("\n");
+    console.log("Final prompt to GPT:\n", prompt);
 
     try {
       const rec = await askChatGPT(prompt);
@@ -222,7 +230,6 @@ Now provide **3** such recommendations. Do not add any other sections.
       alert("🎉 You’ve answered all the questions! Feel free to review or submit.");
     }
   }, [progress]);
-  
   
   return (
     <>

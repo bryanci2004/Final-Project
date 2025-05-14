@@ -229,13 +229,21 @@ Now provide **3** such recommendations. Do not add any other sections.
                             <Button
                                 style={{ margin: '2%', width: '100px' }}
                                 onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
-                                disabled={visibleCard === questions.length - 1}
+                                disabled={visibleCard === questions.length - 1 || detailedQuestionsAnswers[visibleCard].trim() === ''}
                             >
                                 Next
                             </Button>
                             <Button
                                 style={{ margin: '2%', width: '100px' }}
-                                onClick={() => setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}
+                                onClick={() => {const updatedAnswers = [...detailedQuestionsAnswers];
+                                    updatedAnswers[visibleCard] = ''; //clear current answer
+                                    setDetailedQuestionsAnswers(updatedAnswers);
+                                    const answeredCount = updatedAnswers.filter(ans => ans.trim() !== '').length;
+                                    const progress = (answeredCount / questions.length) * 100;
+                                    setDetailedQuestionsProgress(progress);
+
+                                
+                                    setVisibleCard((prev) => Math.min(questions.length - 1, prev + 1))}}
 
                                 disabled={visibleCard === questions.length - 1} 
                             >

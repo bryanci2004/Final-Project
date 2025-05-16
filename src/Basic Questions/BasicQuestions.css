@@ -88,6 +88,7 @@
   background-color: #0077b6 !important; /* override Bootstrap */
   color: white !important;
   border-color: #023e8a !important;
+  box-shadow: 0 0 0 0.001rem rgba(0, 123, 255, 0.5) !important;
 }
 
 /* Navigation buttons */

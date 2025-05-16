@@ -169,7 +169,7 @@ Now provide **3** such recommendations. Do not add any other sections.
                             <Row>
                                 <Col>
                                     <Dropdown className="BasicQuestions-questionsDropdown">
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{backgroundColor: '#013761', borderColor: '#013761'}}>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{backgroundColor: '#013761', borderColor: '#013761', boxShadow: '0 0 0 0.001rem #013761'}}>
                                         Question {visibleCard + 1}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>

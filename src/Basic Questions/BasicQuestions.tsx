@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import ReactMarkdown from "react-markdown"; // To render markdown content from GPT
+import remarkGfm from "remark-gfm"; // Enables GitHub-Flavored Markdown like tables, strikethroughs
 import { Button, Col, Container, Row, Spinner, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { askChatGPT } from "../chatgptService";
+import { askChatGPT } from "../chatgptService"; // Custom API function to call ChatGPT
 import "./BasicQuestions.css";
 import background from './2110.w023.n001.1169B.p1.1169.jpg';
 import logo from './Logo.png'
 
+// ─── Question Type Definition ──────────────────────────────────────────────
 interface Question {
   title: string;
   question: string;
   options: string[];
 }
 
+// ─── Question Set for Basic Quiz ───────────────────────────────────────────
 const questions: Question[] = [
+  // Each question has a title, the question text, and multiple choice options
+  // (Shortened for brevity in this comment block)
   {
     title: "Preferred Activities",
     question: "Which activity do you enjoy the most?",
@@ -127,34 +131,44 @@ const questions: Question[] = [
   }
 ];
 
+// ─── Component: BasicQuestions ─────────────────────────────────────────────
 export default function BasicQuestions(): JSX.Element {
   const navigate = useNavigate();
 
+  // Index of current question
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  // Stores user's selected answers for all questions
   const [answers, setAnswers] = useState<string[]>(Array(questions.length).fill(""));
+  // Tracks completion percentage of the quiz
   const [progress, setProgress] = useState<number>(0);
 
+  // Loading state when submitting quiz
   const [loading, setLoading] = useState<boolean>(false);
+  // Final GPT-generated career recommendation
   const [recommendation, setRecommendation] = useState<string | null>(null);
 
   const currentQuestion = questions[currentIndex];
   const isFirst = currentIndex === 0;
   const isLast = currentIndex === questions.length - 1;
 
-  // Log answers whenever they change
+  // Log answer changes to console (for dev/debugging)
   useEffect(() => {
     console.log("Updated answers state:", answers);
   }, [answers]);
 
+  // ─── Handle User Selection ───────────────────────────────────────────────
   const handleAnswerChange = (option: string) => {
-    console.log(`Q${currentIndex+1} changed →`, option);
+    console.log(`Q${currentIndex + 1} changed →`, option);
     const updated = [...answers];
     updated[currentIndex] = option;
     setAnswers(updated);
+
+    // Update progress
     const answeredCount = updated.filter((ans) => ans.trim() !== "").length;
     setProgress((answeredCount / questions.length) * 100);
   };
 
+  // ─── Navigation Controls ─────────────────────────────────────────────────
   const goToPrevious = () => {
     if (!isFirst) setCurrentIndex((idx) => idx - 1);
   };
@@ -163,17 +177,17 @@ export default function BasicQuestions(): JSX.Element {
     if (!isLast) setCurrentIndex((idx) => idx + 1);
   };
 
+  // ─── Submit Quiz to ChatGPT ──────────────────────────────────────────────
   const handleSubmit = async (): Promise<void> => {
     setLoading(true);
-
     console.log("All basic answers:", answers);
-    // Pair questions and answers
+
+    // Format prompt with all Q&A
     const qaLines = questions
       .map((q, i) =>
-        `Q${i+1}: ${q.question}\nA${i+1}: ${answers[i] || "(no answer)"}`
+        `Q${i + 1}: ${q.question}\nA${i + 1}: ${answers[i] || "(no answer)"}`
       )
       .join("\n\n");
-    console.log("Prompt Q&A lines:\n", qaLines);
 
     const template = `
 You are a professional career advisor. For each recommendation, follow this exact format:
@@ -216,7 +230,7 @@ Now provide **3** such recommendations. Do not add any other sections.
     console.log("Final prompt to GPT:\n", prompt);
 
     try {
-      const rec = await askChatGPT(prompt);
+      const rec = await askChatGPT(prompt); // Call GPT API
       setRecommendation(rec);
     } catch {
       setRecommendation("❗ Error: please check your API key or network.");
@@ -225,14 +239,17 @@ Now provide **3** such recommendations. Do not add any other sections.
     }
   };
 
+  // Notify user when all questions are answered
   useEffect(() => {
     if (progress === 100) {
       alert("🎉 You’ve answered all the questions! Feel free to review or submit.");
     }
   }, [progress]);
-  
+
+  // ─── Render ──────────────────────────────────────────────────────────────
   return (
     <>
+      {/* Header with Logo and Navigation */}
       <header className="BasicQuestions-header">
         <div className="logo-container">
           <img src={logo} alt="a logo" className="logo-img" />
@@ -246,23 +263,27 @@ Now provide **3** such recommendations. Do not add any other sections.
         </div>
       </header>
 
+      {/* Main Quiz Container */}
       <Container
-          className="BasicQuestions-body"
-          style={{
-            backgroundImage: `url(${background})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}
-        >
+        className="BasicQuestions-body"
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <Row className="justify-content-center">
           <Col md={6} className="BasicQuestions-questionsContainers">
+            
+            {/* Dropdown to jump to specific questions */}
             <Row>
               <Col>
                 <Dropdown className="BasicQuestions-questionsDropdown">
-                  <Dropdown.Toggle variant="success" id="dropdown-basic" style={{backgroundColor: '#013761', borderColor: '#013761', boxShadow: '0 0 0 0.001rem #013761'}}>
-                      Question {currentIndex + 1}
+                  <Dropdown.Toggle variant="success" id="dropdown-basic"
+                    style={{ backgroundColor: '#013761', borderColor: '#013761', boxShadow: '0 0 0 0.001rem #013761' }}>
+                    Question {currentIndex + 1}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     {questions.map((_, idx) => (
@@ -274,27 +295,28 @@ Now provide **3** such recommendations. Do not add any other sections.
                 </Dropdown>
               </Col>
               <Col>
-                <h2 style={{marginLeft: '-25vw'}}>{currentQuestion.title}</h2>
+                <h2 style={{ marginLeft: '-25vw' }}>{currentQuestion.title}</h2>
               </Col>
             </Row>
+
+            {/* Question and Options */}
             <p className="question-text">{currentQuestion.question}</p>
             <div className="options-container">
               {currentQuestion.options.map((opt) => (
                 <Button
-                key={opt}
-                variant="outline-secondary"
-                onClick={() => handleAnswerChange(opt)}
-                className={`option-button ${answers[currentIndex] === opt ? "selected" : ""}`}
-              >
-                {opt}
-              </Button>
+                  key={opt}
+                  variant="outline-secondary"
+                  onClick={() => handleAnswerChange(opt)}
+                  className={`option-button ${answers[currentIndex] === opt ? "selected" : ""}`}
+                >
+                  {opt}
+                </Button>
               ))}
             </div>
 
+            {/* Navigation Buttons */}
             <div className="navigation-buttons">
-              <Button onClick={goToPrevious} disabled={isFirst} className="me-2">
-                Prev
-              </Button>
+              <Button onClick={goToPrevious} disabled={isFirst} className="me-2">Prev</Button>
               {isLast ? (
                 <Button onClick={handleSubmit} disabled={loading || answers[currentIndex] === ""}>
                   {loading ? <Spinner animation="border" size="sm" /> : "Submit"}
@@ -302,17 +324,17 @@ Now provide **3** such recommendations. Do not add any other sections.
               ) : (
                 <Button onClick={goToNext} disabled={answers[currentIndex] === ""}>Next</Button>
               )}
-              <Button onClick={() => {goToNext();}} className="me-2">
-                Skip
-              </Button>
+              <Button onClick={goToNext} className="me-2">Skip</Button>
             </div>
 
+            {/* Progress Bar */}
             <Row>
-                    <Col className="d-flex justify-content-center">
-                        <progress value={progress} max={100} className="DetailedQuestions-ProgressBar"/>
-                    </Col>
-                </Row>
+              <Col className="d-flex justify-content-center">
+                <progress value={progress} max={100} className="DetailedQuestions-ProgressBar"/>
+              </Col>
+            </Row>
 
+            {/* GPT Result Display */}
             {recommendation && (
               <div className="recommendation-box mt-4">
                 <ReactMarkdown remarkPlugins={[remarkGfm]} children={recommendation} />

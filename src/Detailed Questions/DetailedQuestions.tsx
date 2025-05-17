@@ -15,38 +15,51 @@ function DetailedQuestions() {
      const navigate = useNavigate();
  
      const questions = [
-         {
-             title: "Long-Term Career Goals",
-             question: "How does your daily commute impact your overall job satisfaction and long-term career goals? Would a shorter or more flexible commute change how you view your current or future roles?",
-         },
-         {
-             title: "Work Preferences",
-             question: "What aspects of remote versus in-office work environments do you find most energizing or draining? How do these preferences influence your productivity, creativity, and sense of connection with your team?",
-         },
-         {
-             title: "Collaboration Style",
-             question: "When collaborating on a project, what role do you naturally gravitate toward, and how does working in a team setting challenge or enhance your effectiveness? How do you handle differences in work styles or opinions?",
-         },
-         {
-             title: "Learning Preferences",
-             question: "Can you describe a time when you successfully learned a new skill or concept—what methods helped you most? How do you adapt your learning style based on the complexity or urgency of a situation?",
-         },
-         {
-             title: "Work-Life Balance",
-             question: "How do you define a healthy work-life balance for yourself, and what boundaries or routines help you maintain it? How has your view of balance evolved throughout your career or personal life?",
-         },
-         {
-             title: "Time Management",
-             question: "When during the day do you feel most focused and productive, and how do you structure your time to align with your natural energy cycles? Have you developed any personal routines that significantly improve your time management?",
-         },
-         {
-             title: "Job Security",
-             question: "How do you evaluate risk and stability when making career decisions? What trade-offs are you willing to accept for greater security or greater opportunity, and how do those choices reflect your personal values or goals?",
-         },
-     ];
+    {
+        title: "Long-Term Career Goals",
+        question: "How does your daily commute impact your overall job satisfaction and long-term career goals? Would a shorter or more flexible commute change how you view your current or future roles?",
+    },
+    {
+        title: "Work Preferences",
+        question: "What aspects of remote versus in-office work environments do you find most energizing or draining? How do these preferences influence your productivity, creativity, and sense of connection with your team?",
+    },
+    {
+        title: "Collaboration Style",
+        question: "When collaborating on a project, what role do you naturally gravitate toward, and how does working in a team setting challenge or enhance your effectiveness? How do you handle differences in work styles or opinions?",
+    },
+    {
+        title: "Learning Preferences",
+        question: "Can you describe a time when you successfully learned a new skill or concept—what methods helped you most? How do you adapt your learning style based on the complexity or urgency of a situation?",
+    },
+    {
+        title: "Work-Life Balance",
+        question: "How do you define a healthy work-life balance for yourself, and what boundaries or routines help you maintain it? How has your view of balance evolved throughout your career or personal life?",
+    },
+    {
+        title: "Time Management",
+        question: "When during the day do you feel most focused and productive, and how do you structure your time to align with your natural energy cycles? Have you developed any personal routines that significantly improve your time management?",
+    },
+    {
+        title: "Job Security",
+        question: "How do you evaluate risk and stability when making career decisions? What trade-offs are you willing to accept for greater security or greater opportunity, and how do those choices reflect your personal values or goals?",
+    },
+    {
+        title: "Motivation Drivers",
+        question: "What motivates you most in a work setting—recognition, autonomy, impact, financial reward, or something else? How have these motivators shaped your past career decisions or ambitions?",
+    },
+    {
+        title: "Ideal Work Environment",
+        question: "Describe the type of physical and social work environment where you feel you thrive. How do factors like noise level, pace, team size, or organizational structure influence your job satisfaction and performance?",
+    },
+    {
+        title: "Handling Change",
+        question: "How do you typically respond to change or uncertainty at work, such as a shift in responsibilities or a new leadership style? Can you share an example of how you've adapted to unexpected change in a positive way?",
+    },
+];
+
  
      const[visibleCard, setVisibleCard] = useState(0);
-     const [detailedQuestionsAnswers, setDetailedQuestionsAnswers] = useState(Array(7).fill(''));
+     const [detailedQuestionsAnswers, setDetailedQuestionsAnswers] = useState(Array(10).fill(''));
      const [detailedQuestionsProgress, setDetailedQuestionsProgress] = useState(0);
 
      
@@ -180,6 +193,9 @@ Now provide **3** such recommendations. Do not add any other sections.
                                         <Dropdown.Item onClick={() => setVisibleCard(4)}>Question 5</Dropdown.Item>
                                         <Dropdown.Item onClick={() => setVisibleCard(5)}>Question 6</Dropdown.Item>
                                         <Dropdown.Item onClick={() => setVisibleCard(6)}>Question 7</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(7)}>Question 8</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(8)}>Question 9</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setVisibleCard(9)}>Question 10</Dropdown.Item>
                                     </Dropdown.Menu>
                                     </Dropdown>
                                 </Col>

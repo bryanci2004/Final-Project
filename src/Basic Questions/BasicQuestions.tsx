@@ -302,7 +302,7 @@ Now provide **3** such recommendations. Do not add any other sections.
               ) : (
                 <Button onClick={goToNext} disabled={answers[currentIndex] === ""}>Next</Button>
               )}
-              <Button onClick={() => {handleAnswerChange("skipped"); goToNext();}} className="me-2">
+              <Button onClick={() => {goToNext();}} className="me-2">
                 Skip
               </Button>
             </div>
